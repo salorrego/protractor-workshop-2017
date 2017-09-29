@@ -4,7 +4,10 @@
   "description": "This is a Workshop about Protractor",
   "main": "index.js",
   "scripts": {
-    "test": "protractor protractor.config.js"
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "test": "npm run build && protractor dist/protractor/config.js"
   },
   "repository": {
     "type": "git",
@@ -24,5 +27,9 @@
   "homepage": "https://github.com/salorrego/protractor-workshop-2017#readme",
   "dependencies": {
     "protractor": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/jasminewd2": "^2.0.3",
+    "typescript": "^2.5.3"
   }
 }
