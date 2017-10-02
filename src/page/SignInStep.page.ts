@@ -1,4 +1,4 @@
-import { $, ElementFinder, promise } from 'protractor';
+import { $, ElementFinder } from 'protractor';
 
 export class SignInPage {
   private get usernameField(): ElementFinder {
@@ -12,16 +12,10 @@ export class SignInPage {
   private get signInButton(): ElementFinder {
     return $('#SubmitLogin > span');
   }
-
-  public sendUser(user: string): promise.Promise<void> {
-    return this.usernameField.sendKeys(user);
-  }
-
-  public sendPass(password: string): promise.Promise<void> {
-    return this.passwordField.sendKeys(password);
-  }
-
-  public logIn(): promise.Promise<void> {
+     
+  public async logIn(user: string, password:string): Promise<void> {
+    await this.usernameField.sendKeys(user);
+    await this.passwordField.sendKeys(password);
     return this.signInButton.click();
   }
 }
