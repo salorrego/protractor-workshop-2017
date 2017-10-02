@@ -45,7 +45,9 @@ describe('Buy a t-shirt', () => {
     await summaryStepPage.proceedToCheckout();
     await(browser.sleep(3000));
 
-    await signInPage.logIn(user, pass);
+    await signInPage.sendUser(user);
+    await signInPage.sendPass(pass);
+    await signInPage.logIn();
     await(browser.sleep(3000));
 
     await addressStepPage.proceedToCheckout();
