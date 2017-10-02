@@ -7,9 +7,9 @@
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "lint": "tslint --type-check --project tsconfig.json protract/**/*.ts test/**/*.ts src/**/*.ts",
+    "lint": "tslint --type-check --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts",
     "postinstall": "webdriver-manager update --gecko false",
-    "test": "npm run test:headless",
+    "test": "npm run lint && npm run test:headless",
     "test:local": "npm run build && protractor dist/protractor/config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.conf.js"
   },

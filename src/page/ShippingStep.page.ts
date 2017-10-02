@@ -2,7 +2,7 @@ import { $, ElementFinder, promise } from 'protractor';
 
 export class ShippingStepPage {
   private get checkButtonTermsOfService(): ElementFinder {
-      return $('#cgv');
+    return $('#cgv');
   }
 
   private get proceedToCheckoutButton(): ElementFinder {
@@ -10,7 +10,7 @@ export class ShippingStepPage {
   }
     
   public agreeTermsOfService(): promise.Promise<void> {
-      return this.checkButtonTermsOfService.click();
+    return this.checkButtonTermsOfService.click();
   }
     
   public proceedToCheckout(): promise.Promise<void> {
