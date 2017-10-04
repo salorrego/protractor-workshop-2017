@@ -1,14 +1,11 @@
-import { $,browser, ElementFinder, ExpectedConditions } from 'protractor';
+import { $, ElementFinder, promise } from 'protractor';
 
 export class ProductListPage {
-  private until = ExpectedConditions;
-
   private get procceedToCheckoutButton(): ElementFinder {
-    return $('.button-container > a');
+    return $('[style*="display: block;"] .button-container > a');
   }
     
-  public async productListCheckout(): Promise<void> {
-    await browser.wait(this.until.visibilityOf(this.procceedToCheckoutButton));
+  public productListCheckout(): promise.Promise<void> {
     return this.procceedToCheckoutButton.click();
   }
 }
