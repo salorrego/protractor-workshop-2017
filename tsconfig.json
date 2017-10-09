@@ -9,7 +9,7 @@
       "jasmine",
       "jasminewd2"
     ],
-    "noUnusedParameters": true,
-    "noUnusedLocals": true
+    "noUnusedParameters": false,
+    "noUnusedLocals": false
   }
 }
