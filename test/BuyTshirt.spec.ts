@@ -1,4 +1,3 @@
-/* tslint:disable */
 import { browser } from 'protractor';
 import { MenuContentPage,
   ProductDetailPage,
@@ -15,15 +14,15 @@ import { MenuContentPage,
 describe('Buy a t-shirt', () => {
 
   const menuContentPage: MenuContentPage = new MenuContentPage();
-  // const productDetail: ProductDetailPage = new ProductDetailPage();
-  // const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
-  // const productListPage: ProductListPage = new ProductListPage();
-  // const summaryStepPage: SummaryStepPage = new SummaryStepPage();
-  // const signInPage: SignInPage = new SignInPage();
-  // const addressStepPage: AddressStepPage = new AddressStepPage();
-  // const shippingStepPage: ShippingStepPage = new ShippingStepPage();
-  // const paymentStepPage: PaymentStepPage = new PaymentStepPage();
-  // const orderResumePage: OrderResumePage = new OrderResumePage();
+  const productDetail: ProductDetailPage = new ProductDetailPage();
+  const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
+  const productListPage: ProductListPage = new ProductListPage();
+  const summaryStepPage: SummaryStepPage = new SummaryStepPage();
+  const signInPage: SignInPage = new SignInPage();
+  const addressStepPage: AddressStepPage = new AddressStepPage();
+  const shippingStepPage: ShippingStepPage = new ShippingStepPage();
+  const paymentStepPage: PaymentStepPage = new PaymentStepPage();
+  const orderResumePage: OrderResumePage = new OrderResumePage();
 
   it('then should be bought a t-shirt', async () => {
     const user = 'aperdomobo@gmail.com';
@@ -33,28 +32,27 @@ describe('Buy a t-shirt', () => {
 
     await menuContentPage.goToTShirtMenu();
 
-    // await productDetail.goToProductDetail();
+    await productDetail.goToProductDetail();
 
-    // await productAddedModalPage.addToCart();
+    await productAddedModalPage.addToCart();
 
-    // await productListPage.productListCheckout();
+    await productListPage.productListCheckout();
 
-    // await summaryStepPage.proceedToCheckout();
+    await summaryStepPage.proceedToCheckout();
 
-    // await signInPage.logIn(user, pass);
+    await signInPage.logIn(user, pass);
 
-    // await addressStepPage.proceedToCheckout();
+    await addressStepPage.proceedToCheckout();
 
-    // await shippingStepPage.agreeTermsOfService();
+    await shippingStepPage.agreeTermsOfService();
 
-    // await shippingStepPage.proceedToCheckout();
+    await shippingStepPage.proceedToCheckout();
 
-    // await paymentStepPage.pay();
+    await paymentStepPage.pay();
 
-    // await paymentStepPage.confirmOrder();
+    await paymentStepPage.confirmOrder();
 
-    // await expect(orderResumePage.getResumeText())
-    //  .toBe('Your order on My Store is complete.');
-    expect(true).toBe(true);
+    await expect(orderResumePage.getResumeText())
+     .toBe('Your order on My Store is complete.');
   });
 });
