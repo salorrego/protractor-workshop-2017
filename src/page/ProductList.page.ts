@@ -4,7 +4,7 @@ export class ProductListPage {
   private until = ExpectedConditions;
 
   private get procceedToCheckoutButton(): ElementFinder {
-    return $('[style*="display: block;"] .button-container > a');
+    return $('a[title="Proceed to checkout"]');
   }
     
   public async productListCheckout(): Promise<void> {

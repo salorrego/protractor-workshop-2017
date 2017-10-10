@@ -10,7 +10,7 @@ export class SignInPage {
   }
 
   private get signInButton(): ElementFinder {
-    return $('#SubmitLogin > span');
+    return $('#SubmitLogin');
   }
      
   public async logIn(user: string, password:string): Promise<void> {
