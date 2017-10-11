@@ -60,6 +60,8 @@ typings/
 # dotenv environment variables file
 .env
 
+### Reports Folder ###
+reports
 
 ### VisualStudioCode ###
 .vscode/*
