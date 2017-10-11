@@ -17,7 +17,7 @@ describe('Given the page for buying', () => {
     await browser.get('http://automationpractice.com/');
   });
 
-  describe('When buying a T-Shirt', () => {
+  describe('when buying a T-Shirt', () => {
     const menuContentPage: MenuContentPage = new MenuContentPage();
     const productDetail: ProductDetailPage = new ProductDetailPage();
     const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
@@ -32,7 +32,7 @@ describe('Given the page for buying', () => {
       await summaryStepPage.proceedToCheckout();
     });
 
-    describe('And signing-in', () => {
+    describe('and signing-in', () => {
       const signInPage: SignInPage = new SignInPage();
       const user = 'aperdomobo@gmail.com';
       const pass = 'WorkshopProtractor';
@@ -41,7 +41,7 @@ describe('Given the page for buying', () => {
         await signInPage.logIn(user, pass);
       });
 
-      describe('And choosing the address by default', () => {
+      describe('and choosing the address by default', () => {
         const addressStepPage: AddressStepPage = new AddressStepPage();
         const shippingStepPage: ShippingStepPage = new ShippingStepPage();
 
@@ -51,7 +51,7 @@ describe('Given the page for buying', () => {
           await shippingStepPage.proceedToCheckout();
         });
 
-        describe('And paying with bank account', () => {
+        describe('and paying with bank account', () => {
           const paymentStepPage: PaymentStepPage = new PaymentStepPage();
           const orderResumePage: OrderResumePage = new OrderResumePage();
 
@@ -60,7 +60,7 @@ describe('Given the page for buying', () => {
             await paymentStepPage.confirmOrder();
           });
         
-          it('Then the order should be confirmed', async () => {
+          it('then the order should be confirmed', async () => {
             await expect(orderResumePage.getResumeText())
              .toBe('Your order on My Store is complete.');
           });
