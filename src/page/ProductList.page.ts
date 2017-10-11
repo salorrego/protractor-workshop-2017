@@ -7,8 +7,8 @@ export class ProductListPage {
 
   private findByProduct(name: string): ElementFinder {
     return this.productContainerList.filter((product) => {
-      return product.$('a.product_img_link').then((productLink) => {
-        return productLink.getAttribute('title') === name;
+      return product.$('a.product_img_link').getAttribute('title').then((attribute) => {
+        return attribute === name;
       });
     }).first();
   }

@@ -18,6 +18,7 @@ describe('Given the page for buying', () => {
   });
 
   describe('when buying a T-Shirt', () => {
+    console.log('entra aca..');
     const menuContentPage: MenuContentPage = new MenuContentPage();
     const productDetail: ProductDetailPage = new ProductDetailPage();
     const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
@@ -25,8 +26,9 @@ describe('Given the page for buying', () => {
     const summaryStepPage: SummaryStepPage = new SummaryStepPage();
 
     const name = 'Faded Short Sleeve T-shirts';
-
+    console.log('problema en constructor');
     beforeEach(async () => {
+      console.log('entra aca2..');
       await menuContentPage.goToTShirtMenu();
       await productListPage.goToProductDetail(name);
       await productDetail.addToCart();
