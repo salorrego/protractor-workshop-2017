@@ -1,14 +1,18 @@
-import { $, ElementFinder, ExpectedConditions, browser } from 'protractor';
+import { $$, ElementFinder, ElementArrayFinder, promise } from 'protractor';
 
 export class ProductListPage {
-  private until = ExpectedConditions;
+  private get productContainerList(): ElementArrayFinder {
+    return $$('.product-container');
+  }
 
-  private get procceedToCheckoutButton(): ElementFinder {
-    return $('a[title="Proceed to checkout"]');
+  private findByProduct(name: string): ElementFinder {
+    let element;
+    element = this.productContainerList.find(product => 
+      product.$('a').getAttribute('title') === name);
+    return element;
   }
     
-  public async productListCheckout(): Promise<void> {
-    await browser.wait(this.until.visibilityOf(this.procceedToCheckoutButton));
-    return this.procceedToCheckoutButton.click();
+  public goToProductDetail(name: string): promise.Promise<void> {
+    return this.findByProduct(name).click();
   }
 }

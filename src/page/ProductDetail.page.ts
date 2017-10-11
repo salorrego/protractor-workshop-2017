@@ -1,11 +1,11 @@
 import { $, ElementFinder, promise } from 'protractor';
 
 export class ProductDetailPage {
-  private get productDetail(): ElementFinder {
-    return $('[title="Faded Short Sleeve T-shirts"] > img');
+  private get productToAdd(): ElementFinder {
+    return $('button[name="Submit"]');
   }
     
-  public goToProductDetail(): promise.Promise<void> {
-    return this.productDetail.click();
+  public addToCart(): promise.Promise<void> {
+    return this.productToAdd.click();
   }
 }
