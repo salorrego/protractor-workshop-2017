@@ -2,19 +2,18 @@ import { $$, ElementFinder, ElementArrayFinder, promise } from 'protractor';
 
 export class ProductListPage {
   private get productContainerList(): ElementArrayFinder {
-    return $$('.product-container');
+    return $$('.product_List > li');
   }
 
   private findByProduct(name: string): ElementFinder {
-    let element;
-    element = this.productContainerList.filter(product => 
-      product.$('a.product_img_link').then((title) => {
-        return title.getAttribute('title') === name;
-      }));
-    return element.first();
+    return this.productContainerList.filter((product) => {
+      return product.$('a.product_img_link').then((productLink) => {
+        return productLink.getAttribute('title') === name;
+      });
+    }).first();
   }
     
   public goToProductDetail(name: string): promise.Promise<void> {
-    return this.findByProduct(name).click();
+    return this.findByProduct(name).$('img').click();
   }
 }
