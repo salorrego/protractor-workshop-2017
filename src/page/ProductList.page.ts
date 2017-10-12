@@ -1,14 +1,19 @@
-import { $, ElementFinder, ExpectedConditions, browser } from 'protractor';
+import { $$, ElementFinder, ElementArrayFinder, promise } from 'protractor';
 
 export class ProductListPage {
-  private until = ExpectedConditions;
+  private get productContainerList(): ElementArrayFinder {
+    return $$('.product_list > li');
+  }
 
-  private get procceedToCheckoutButton(): ElementFinder {
-    return $('a[title="Proceed to checkout"]');
+  private findByProduct(name: string): ElementFinder {
+    return this.productContainerList.filter((product) => {
+      return product.$('a.product_img_link').getAttribute('title').then((attribute) => {
+        return attribute === name;
+      });
+    }).first();
   }
     
-  public async productListCheckout(): Promise<void> {
-    await browser.wait(this.until.visibilityOf(this.procceedToCheckoutButton));
-    return this.procceedToCheckoutButton.click();
+  public goToProductDetail(name: string): promise.Promise<void> {
+    return this.findByProduct(name).$('img').click();
   }
 }

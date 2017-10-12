@@ -24,11 +24,13 @@ describe('Given the page for buying', () => {
     const productListPage: ProductListPage = new ProductListPage();
     const summaryStepPage: SummaryStepPage = new SummaryStepPage();
 
+    const name = 'Faded Short Sleeve T-shirts';
+
     beforeEach(async () => {
       await menuContentPage.goToTShirtMenu();
-      await productDetail.goToProductDetail();
-      await productAddedModalPage.addToCart();
-      await productListPage.productListCheckout();
+      await productListPage.goToProductDetail(name);
+      await productDetail.addToCart();
+      await productAddedModalPage.productAddedModalCheckout();
       await summaryStepPage.proceedToCheckout();
     });
 
