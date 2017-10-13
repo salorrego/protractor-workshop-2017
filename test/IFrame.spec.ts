@@ -6,7 +6,7 @@ describe('Given the iFrame page', () => {
   
   const iFramePage: IFramePage = new IFramePage;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     await browser.get(urlBase);
   });
 

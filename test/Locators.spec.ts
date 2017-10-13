@@ -1,10 +1,10 @@
 import { browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
 
-describe('Given the page to form fill', () => {
+fdescribe('Given the page to form fill', () => {
   const urlBase = 'http://toolsqa.com/automation-practice-form/';
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     await browser.get(urlBase);
   });
 
