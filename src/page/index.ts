@@ -1,4 +1,5 @@
 export { AddressStepPage } from './AddressStep.page';
+export { IFramePage } from './IFrame.page';
 export { MenuContentPage } from './MenuContent.page';
 export { OrderResumePage } from './OrderResume.page';
 export { PaymentStepPage } from './PaymentStep.page';
