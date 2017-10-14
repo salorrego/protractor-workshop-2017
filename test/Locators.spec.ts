@@ -4,7 +4,7 @@ import { PersonalInformationPage } from '../src/page';
 describe('Given the page to form fill', () => {
   const urlBase = 'http://toolsqa.com/automation-practice-form/';
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     await browser.get(urlBase);
   });
 
@@ -33,14 +33,15 @@ describe('Given the page to form fill', () => {
 
     describe('and I hit the button submit', () => {
       const expectedTitle = 'Practice Automation Form';
-      const titleText = personalInformationPage.getTitle();
+      let titleText;
 
       beforeEach(async () => {
         await personalInformationPage.submitForm();
+        titleText = personalInformationPage.getTitle();
       });
 
       it(`then the title "${expectedTitle}" must be on screen`, async () => {
-        await expect(titleText).toBe(expectedTitle);
+        await expect(await titleText).toBe(expectedTitle);
       });
     });
   });
