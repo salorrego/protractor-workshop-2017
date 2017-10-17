@@ -4,7 +4,7 @@ import { PersonalInformationPage } from '../src/page';
 describe('Given the page to form fill', () => {
   const urlBase = 'http://toolsqa.com/automation-practice-form/';
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     await browser.get(urlBase);
   });
 
@@ -27,7 +27,7 @@ describe('Given the page to form fill', () => {
         'WebElement Commands']
     };
 
-    beforeEach(async () => {
+    beforeAll(async () => {
       await personalInformationPage.fillForm(form);
     });
 
@@ -35,7 +35,7 @@ describe('Given the page to form fill', () => {
       const expectedTitle = 'Practice Automation Form';
       let titleText;
 
-      beforeEach(async () => {
+      beforeAll(async () => {
         await personalInformationPage.submitForm();
         titleText = personalInformationPage.getTitle();
       });
