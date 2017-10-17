@@ -13,7 +13,7 @@ import { MenuContentPage,
 
 describe('Given the page for buying', () => {
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     await browser.get('http://automationpractice.com/');
   });
 
@@ -26,7 +26,7 @@ describe('Given the page for buying', () => {
 
     const name = 'Faded Short Sleeve T-shirts';
 
-    beforeEach(async () => {
+    beforeAll(async () => {
       await menuContentPage.goToTShirtMenu();
       await productListPage.goToProductDetail(name);
       await productDetail.addToCart();
@@ -39,7 +39,7 @@ describe('Given the page for buying', () => {
       const user = 'aperdomobo@gmail.com';
       const pass = 'WorkshopProtractor';
 
-      beforeEach(async () => {
+      beforeAll(async () => {
         await signInPage.logIn(user, pass);
       });
 
@@ -47,7 +47,7 @@ describe('Given the page for buying', () => {
         const addressStepPage: AddressStepPage = new AddressStepPage();
         const shippingStepPage: ShippingStepPage = new ShippingStepPage();
 
-        beforeEach(async () => {
+        beforeAll(async () => {
           await addressStepPage.proceedToCheckout();
           await shippingStepPage.agreeTermsOfService();
           await shippingStepPage.proceedToCheckout();
@@ -57,7 +57,7 @@ describe('Given the page for buying', () => {
           const paymentStepPage: PaymentStepPage = new PaymentStepPage();
           const orderResumePage: OrderResumePage = new OrderResumePage();
 
-          beforeEach(async () => {
+          beforeAll(async () => {
             await paymentStepPage.pay();
             await paymentStepPage.confirmOrder();
           });
