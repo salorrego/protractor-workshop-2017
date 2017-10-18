@@ -1,7 +1,7 @@
 import { browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
 
-describe('Given the page to form fill', () => {
+fdescribe('Given the page to form fill', () => {
   const urlBase = 'http://toolsqa.com/automation-practice-form/';
 
   beforeAll(async () => {
@@ -24,11 +24,12 @@ describe('Given the page to form fill', () => {
         'Navigation Commands',
         'Switch Commands',
         'Wait Commands',
-        'WebElement Commands']
+        'WebElement Commands'],
+      file: '../../../resources/jpg_for_upload.jpg',
     };
 
     beforeAll(async () => {
-      await personalInformationPage.fillForm(form);
+      await personalInformationPage.submit(form);
     });
 
     describe('and I hit the button submit', () => {
@@ -36,12 +37,11 @@ describe('Given the page to form fill', () => {
       let titleText;
 
       beforeAll(async () => {
-        await personalInformationPage.submitForm();
         titleText = personalInformationPage.getTitle();
       });
 
       it(`then the title "${expectedTitle}" must be on screen`, async () => {
-        await expect(await titleText).toBe(expectedTitle);
+        expect(titleText).toBe(expectedTitle);
       });
     });
   });
