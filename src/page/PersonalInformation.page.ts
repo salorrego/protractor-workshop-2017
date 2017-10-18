@@ -4,6 +4,7 @@ import {
   by,
   element,
   ExpectedConditions,
+  promise
 } from 'protractor';
 
 import { resolve } from 'path';
@@ -29,21 +30,21 @@ export class PersonalInformationPage {
     return element(by.id('photo'));
   }
   
-  private async chooseProfession(profession): Promise<void> {
-    await profession.forEach(async (element) => {
+  private chooseProfession(profession): promise.Promise<void> {
+    return profession.forEach(async (element) => {
       await element(by.css(`input[value="${element}"]`)).click();
     });
   }
   
-  private async chooseTools(tools): Promise<void> {
-    await tools.forEach(async (element) => {
+  private chooseTools(tools): promise.Promise<void> {
+    return tools.forEach(async (element) => {
       await element(by.css(`input[value="${element}"]`)).click();
     });
   }
 
-  private async clickCommands(commands): Promise<void> {
+  private clickCommands(commands): promise.Promise<void> {
     const commandsSelect = element(by.id('selenium_commands'));
-    await commands.forEach(async (element) => {
+    return commands.forEach(async (element) => {
       await commandsSelect.element(by.cssContainingText('option', element)).click();
     });
   }
@@ -66,16 +67,16 @@ export class PersonalInformationPage {
     await this.chooseProfession(form.profession);
     await this.chooseTools(form.tools);
     await this.continentChoose(form.continent).click();
-    await this.clickCommands(form.commands);
+    return this.clickCommands(form.commands);
   }
 
   private sexField(sex): ElementFinder {
     return element(by.css(`input[value="${sex}"]`));
   }
 
-  private async uploadFile(filePath: string): Promise<void> {
+  private uploadFile(filePath: string): promise.Promise<void> {
     const absolutePath = resolve(__dirname, filePath);
-    await this.uploadInput.sendKeys(absolutePath);
+    return this.uploadInput.sendKeys(absolutePath);
   }
   
   public async getTitle(): Promise<string> {
@@ -86,6 +87,6 @@ export class PersonalInformationPage {
 
   public async submit(form): Promise<void> {
     await this.fillForm(form);
-    return await this.buttonSubmit.click();
+    return this.buttonSubmit.click();
   }
 }

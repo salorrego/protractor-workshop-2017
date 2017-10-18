@@ -1,7 +1,7 @@
 import { browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
 
-describe('Given the page to form fill', () => {
+fdescribe('Given the page to form fill', () => {
   const urlBase = 'http://toolsqa.com/automation-practice-form/';
 
   beforeAll(async () => {
@@ -25,7 +25,7 @@ describe('Given the page to form fill', () => {
         'Switch Commands',
         'Wait Commands',
         'WebElement Commands'],
-      file: '../../../resources/jpg_for_upload.jpg'
+      file: '../../../resources/jpg_for_upload.jpg',
     };
 
     beforeAll(async () => {
