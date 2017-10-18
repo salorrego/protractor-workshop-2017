@@ -1,4 +1,12 @@
-import { browser, ElementFinder, promise, by, element, ExpectedConditions } from 'protractor';
+import { 
+  browser,
+  ElementFinder,
+  by,
+  element,
+  ExpectedConditions,
+} from 'protractor';
+
+import { resolve } from 'path';
 
 export class PersonalInformationPage {
   private get buttonSubmit(): ElementFinder {
@@ -16,22 +24,26 @@ export class PersonalInformationPage {
   private get title(): ElementFinder {
     return element(by.id('content')).element(by.tagName('h1'));
   }
+
+  private get uploadInput(): ElementFinder {
+    return element(by.id('photo'));
+  }
   
-  private chooseProfession(profession): void {
-    profession.forEach(async (element) => {
+  private async chooseProfession(profession): Promise<void> {
+    await profession.forEach(async (element) => {
       await element(by.css(`input[value="${element}"]`)).click();
     });
   }
   
-  private chooseTools(tools): void {
-    tools.forEach(async (element) => {
+  private async chooseTools(tools): Promise<void> {
+    await tools.forEach(async (element) => {
       await element(by.css(`input[value="${element}"]`)).click();
     });
   }
 
-  private clickCommands(commands): void {
+  private async clickCommands(commands): Promise<void> {
     const commandsSelect = element(by.id('selenium_commands'));
-    commands.forEach(async (element) => {
+    await commands.forEach(async (element) => {
       await commandsSelect.element(by.cssContainingText('option', element)).click();
     });
   }
@@ -45,8 +57,25 @@ export class PersonalInformationPage {
     return element(by.id(`exp-${exp - 1}`));
   }
 
+  private async fillForm(form): Promise<void> {
+    await this.firstNameField.sendKeys(form.firstName);
+    await this.lastNameField.sendKeys(form.lastName);
+    await this.sexField(form.sex).click();
+    await this.experience(form.experience).click();
+    await this.uploadFile(form.file);
+    await this.chooseProfession(form.profession);
+    await this.chooseTools(form.tools);
+    await this.continentChoose(form.continent).click();
+    await this.clickCommands(form.commands);
+  }
+
   private sexField(sex): ElementFinder {
     return element(by.css(`input[value="${sex}"]`));
+  }
+
+  private async uploadFile(filePath: string): Promise<void> {
+    const absolutePath = resolve(__dirname, filePath);
+    await this.uploadInput.sendKeys(absolutePath);
   }
   
   public async getTitle(): Promise<string> {
@@ -55,18 +84,8 @@ export class PersonalInformationPage {
     return this.title.getText();
   }
 
-  public async fillForm(form): Promise<void> {
-    await this.firstNameField.sendKeys(form.firstName);
-    await this.lastNameField.sendKeys(form.lastName);
-    await this.sexField(form.sex).click();
-    await this.experience(form.experience).click();
-    this.chooseProfession(form.profession);
-    this.chooseTools(form.tools);
-    this.continentChoose(form.continent).click();
-    this.clickCommands(form.commands);
-  }
-
-  public submitForm(): promise.Promise<void> {
-    return this.buttonSubmit.click();
+  public async submit(form): Promise<void> {
+    await this.fillForm(form);
+    return await this.buttonSubmit.click();
   }
 }
